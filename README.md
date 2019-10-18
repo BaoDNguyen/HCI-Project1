@@ -1,12 +1,12 @@
 # HCI-Project1
-
+Our link: https://baodnguyen.github.io/HCI-Project1/
 Class: Human Computer Interaction, CS 5332\
 Group: 9
 Group members:
   1. Bao Dien Quoc Nguyen
-  2. Vung Pham
+  2. Hao Van
   3. Ngan Vuong Thuy Nguyen
-  4. Hao Van
+  4. Vung Pham
 ![member](./img/groupmember.jpg)
 ## Our Sketch
 

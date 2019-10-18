@@ -3,14 +3,14 @@
 Class: Human Computer Interaction, CS 5332\
 Group: 9
 Group members:
-  1. Vung Pham
-  2. Hao Van
+  1. Bao Dien Quoc Nguyen
+  2. Vung Pham
   3. Ngan Vuong Thuy Nguyen
-  4. Bao Dien Quoc Nguyen
+  4. Hao Van
 
 ## Our Sketch
 
-![graph0](https://imgur.com/a/RRoo2HI)
+![graph0](https://imgur.com/S2PyJ6f)
 
 Some people might take a bath in the morning before going out for their new interesting day.
 Therefore, we believe that there should be a clock for them to manage time, a brief weather forecast for planning their travels, and an event calendar for arranging activites in upcoming days.

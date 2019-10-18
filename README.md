@@ -50,5 +50,7 @@ Beside above areas, at the bottom-left corner, there are places for musics playe
 Next to them, at the bottom-middle, users can read some notifications from Message, Facebook or so on.
 At the top-middle of the mirror, users can see Alex, an AI assistant, if it is working.
 The region is a blank space if we do not use ALex.
+At the top-right corner of the mirror, there are some icons of Wifi, Bluetooth, and Smartphone synchronization.
+They tell the users related information.
 The main large area in the center is utilized for users looking at them in the mirror, or a place for application such as Youtube.
 Because users use these applications when they do not want to look at their image, so this area is a multifunctional region.

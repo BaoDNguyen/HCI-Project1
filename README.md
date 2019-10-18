@@ -7,10 +7,10 @@ Group members:
   2. Vung Pham
   3. Ngan Vuong Thuy Nguyen
   4. Hao Van
-
+![member](./img/groupmember.jpg)
 ## Our Sketch
 
-![graph0](https://imgur.com/S2PyJ6f)
+![sketch](./img/draft2sketch.png)
 
 Some people might take a bath in the morning before going out for their new interesting day.
 Therefore, we believe that there should be a clock for them to manage time, a brief weather forecast for planning their travels, and an event calendar for arranging activites in upcoming days.

@@ -10,7 +10,7 @@ Group members:
 
 ## Our Sketch
 
-![graph0](https://imgur.com/a/mSisIw2)
+![graph0](https://imgur.com/a/FVtBzUa)
 
 Some people might take a bath in the morning before going out for their new interesting day.
 Therefore, we believe that there should be a clock for them to manage time, a brief weather forecast for planning their travels, and an event calendar for arranging activites in upcoming days.

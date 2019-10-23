@@ -1,0 +1,29 @@
+html,body{
+    height: 100vh;
+    overflow: hidden;
+}
+#mainContent {
+    position: absolute;
+    top:0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#bathroom {
+    height: 100vh;
+    width: auto;
+    background-image: url('../../img/bathroom.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: auto 100%;
+}
+
+#mirrorimage canvas{
+    width: auto!important;
+    height: calc(100vh*7.5/10.4)!important;
+    transform: scaleX(-1);
+}
+
+#mirrorimage{
+    box-shadow: 0px 0px 40px 20px #0ff;
+}

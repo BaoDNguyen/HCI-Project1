@@ -5,18 +5,28 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="src/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="src/css/main.css" />
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--    import script -->
+    <script src="src/lib/p5.js"></script>
+    <script src="src/lib/p5.dom.min.js"></script>
+    <script src="src/lib/p5.sound.min.js"></script>
+    <script src="src/lib/d3.v5.min.js"></script>
 </head>
 
 <body>
 <div class="row">
-    <div class="col s12">
-        <img src="img/bathroom.jpg">
+    <div class="col s12" style="padding:0">
+        <div id="bathroom" ></div>
+        <div id ="mainContent">
+            <div id ="mirrorimage"></div>
+        </div>
     </div>
 </div>
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="src/lib/materialize.min.js"></script>
+<script src="src/scripts/sketch.js"></script>
 </body>
 </html>

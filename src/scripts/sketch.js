@@ -1,5 +1,4 @@
 let capture;
-let height = window.innerHeight;
 
 //My variables for weather (Bao)
 var Bweather;

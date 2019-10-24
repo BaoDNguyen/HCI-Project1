@@ -1,6 +1,7 @@
 
 .DS_Store
 *.iml
+.sass-cache
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml

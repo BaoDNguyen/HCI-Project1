@@ -6,7 +6,10 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="src/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="src/css/main.css" />
-
+    <link rel="stylesheet" href="src/css/gridstack.min.css" />
+    <link rel="stylesheet" href="src/css/gridstack-extra.css" />
+    <link rel="stylesheet" href="src/css/menu.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--    import script -->
@@ -14,6 +17,13 @@
     <script src="src/lib/p5.dom.min.js"></script>
     <script src="src/lib/p5.sound.min.js"></script>
     <script src="src/lib/d3.v5.min.js"></script>
+    <script src="src/lib/jquery-3.4.1.min.js"></script>
+    <script src="src/lib/jquery-ui.js"></script>
+    <script src="src/lib/jquery.ui.touch-punch.js"></script>
+    <script src="src/lib/shim.min.js"></script>
+    <script src="src/lib/lodash.min.js"></script>
+    <script src="src/lib/gridstack.min.js"></script>
+    <script src="src/lib/gridstack.jQueryUI.min.js"></script>
 </head>
 
 <body>
@@ -22,11 +32,61 @@
         <div id="bathroom" ></div>
         <div id ="mainContent">
             <div id ="mirrorimage"></div>
+            <div id = "overlay_panel" class="row">
+                <div class="col s3">
+                    <div class="grid-stack grid-stack-3" id="left_panel">
+                        <div class="griditem" ><h1 class="noselect">Wellcome</h1></div>
+                    </div>
+                </div>
+                <div class="col s3 offset-s9">
+                    <div class="grid-stack grid-stack-3" id="right_panel">
+                    </div>
+                </div>
+                <div class="menu">
+                    <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+                    <label class="menu-open-button" for="menu-open">
+                        <span class="hamburger hamburger-1"></span>
+                        <span class="hamburger hamburger-2"></span>
+                        <span class="hamburger hamburger-3"></span>
+                    </label>
+
+                    <a href="#" class="menu-item"> <i class="fa fa-calendar" aria-hidden="true"></i> </a>
+                    <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
+                    <a href="#" class="menu-item"> <i class="fa fa-music"></i> </a>
+                    <a href="#" class="menu-item"> <i class="fa fa-ellipsis-h"></i> </a>
+                    <a href="#" class="menu-item"> <i class="fa fa-cog"></i> </a>
+                    <a href="#" class="menu-item"> <i class="fa fa-lightbulb-o" aria-hidden="true"></i> </a>
+                    <a href="#" class="menu-item"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> </a>
+
+                </div>
+                <!-- filters -->
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                        <filter id="shadowed-goo">
+
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+                            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+                            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+                            <feComposite in2="shadow" in="goo" result="goo" />
+                            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                        </filter>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            </div>
         </div>
     </div>
 </div>
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="src/lib/materialize.min.js"></script>
+<script src="src/scripts/init.js"></script>
 <script src="src/scripts/sketch.js"></script>
 </body>
 </html>

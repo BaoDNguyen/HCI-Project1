@@ -1,0 +1,281 @@
+/* line 13, scss/menu.scss */
+a {
+  color: inherit;
+}
+
+/* line 16, scss/menu.scss */
+h1, h2, h3, h4 {
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* line 21, scss/menu.scss */
+h1 {
+  font-size: 3em;
+}
+
+/* line 24, scss/menu.scss */
+.menu {
+  filter: url("#goo");
+}
+
+/* line 29, scss/menu.scss */
+.menu-item, .menu-open-button {
+  background: #e91e63;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  position: absolute;
+  top: 20px;
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  transform: translate3d(0, 0, 0);
+  transition: transform ease-out 200ms;
+}
+
+/* line 43, scss/menu.scss */
+.menu-open {
+  display: none;
+}
+
+/* line 49, scss/menu.scss */
+.hamburger {
+  width: 25px;
+  height: 3px;
+  background: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -12.5px;
+  margin-top: -1.5px;
+  transition: transform 200ms;
+}
+
+/* line 64, scss/menu.scss */
+.hamburger-1 {
+  transform: translate3d(0, -8px, 0);
+}
+
+/* line 67, scss/menu.scss */
+.hamburger-2 {
+  transform: translate3d(0, 0, 0);
+}
+
+/* line 70, scss/menu.scss */
+.hamburger-3 {
+  transform: translate3d(0, 8px, 0);
+}
+
+/* line 74, scss/menu.scss */
+.menu-open:checked + .menu-open-button .hamburger-1 {
+  transform: translate3d(0, 0, 0) rotate(45deg);
+}
+/* line 77, scss/menu.scss */
+.menu-open:checked + .menu-open-button .hamburger-2 {
+  transform: translate3d(0, 0, 0) scale(0.1, 1);
+}
+/* line 80, scss/menu.scss */
+.menu-open:checked + .menu-open-button .hamburger-3 {
+  transform: translate3d(0, 0, 0) rotate(-45deg);
+}
+
+/* line 84, scss/menu.scss */
+.menu {
+  position: absolute;
+  left: 50%;
+  margin-left: -165px;
+  padding-top: 20px;
+  padding-left: 165px;
+  width: 330px;
+  height: 180px;
+  box-sizing: border-box;
+  font-size: 20px;
+  text-align: left;
+  transform: translateY(50%);
+  bottom: 0;
+}
+
+/* line 104, scss/menu.scss */
+.menu-item:hover {
+  background: white;
+  color: #e91e63;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(3) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(4) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(5) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(6) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(7) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(8) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(9) {
+  transition-duration: 180ms;
+}
+/* line 109, scss/menu.scss */
+.menu-item:nth-child(10) {
+  transition-duration: 180ms;
+}
+
+/* line 115, scss/menu.scss */
+.menu-open-button {
+  z-index: 2;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 400ms;
+  transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+  cursor: pointer;
+}
+
+/* line 124, scss/menu.scss */
+.menu-open-button:hover {
+  transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+}
+
+/* line 127, scss/menu.scss */
+.menu-open:checked + .menu-open-button {
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+  transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+}
+
+@-webkit-keyframes menuopen {
+  0% {
+    bottom: 0%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  100% {
+    -moz-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -ms-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+  }
+}
+@-moz-keyframes menuopen {
+  0% {
+    bottom: 0%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  100% {
+    -moz-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -ms-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+  }
+}
+@-ms-keyframes menuopen {
+  0% {
+    bottom: 0%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  100% {
+    -moz-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -ms-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+  }
+}
+@-o-keyframes menuopen {
+  0% {
+    bottom: 0%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  100% {
+    -moz-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -ms-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+  }
+}
+@keyframes menuopen {
+  0% {
+    bottom: 0%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  100% {
+    -moz-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -ms-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+  }
+}
+/* line 162, scss/menu.scss */
+.menu-open:checked ~ .menu-item {
+  transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(3) {
+  transition-duration: 180ms;
+  transform: translate3d(0.07565px, -94.99997px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(4) {
+  transition-duration: 280ms;
+  transform: translate3d(74.2942px, -59.20618px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(5) {
+  transition-duration: 380ms;
+  transform: translate3d(92.62056px, 21.12895px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(6) {
+  transition-duration: 480ms;
+  transform: translate3d(41.26763px, 85.56858px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(7) {
+  transition-duration: 580ms;
+  transform: translate3d(-41.1313px, 85.6342px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(8) {
+  transition-duration: 680ms;
+  transform: translate3d(-92.58679px, 21.27644px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(9) {
+  transition-duration: 780ms;
+  transform: translate3d(-74.3884px, -59.08778px, 0);
+}
+/* line 167, scss/menu.scss */
+.menu-open:checked ~ .menu-item:nth-child(10) {
+  transition-duration: 880ms;
+  transform: translate3d(-0.22695px, -94.99973px, 0);
+}
+
+/* line 174, scss/menu.scss */
+.menu.active {
+  transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+  transition-duration: 400ms;
+  transform: translateY(0);
+}

@@ -1,5 +1,4 @@
 let capture;
-let height = window.innerHeight;
 function setup() {
     let canvas = createCanvas(1400, 750);
     canvas.parent('mirrorimage');
@@ -9,6 +8,6 @@ function setup() {
 }
 
 function draw() {
-    background(255);
+    background(100);
     image(capture, 0, 0, 1400, 1050);
 }

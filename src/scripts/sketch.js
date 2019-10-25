@@ -6,6 +6,7 @@ var img0;
 var Bnews;
 var Btime;
 
+
 function setup() {
     let canvas = createCanvas(1400, 750);
     canvas.parent('mirrorimage');
@@ -16,19 +17,28 @@ function setup() {
     // My setup for weather (Bao)
     loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
     loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
-    setInterval(asktime(),60000)
-
+    asktime();
+    setInterval(askData,60000)
 
 }
 // timer (Ngan)
-function asktime(){
+function askData(){
     loadJSON('http://worldtimeapi.org/api/timezone/America/Eirunepe',gettime);
+    loadJSON('http://api.openweathermap.org/data/2.5/weather?zip=79415,us&APPID=3f2b39ee96bea5d53296ae364ac222de',getcurrentweather);
 }
 
 // weather function (Bao)
 function getweather(data0) {
     Bweather = data0;
     console.log(Bweather);
+    img0 = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
+}
+
+// weather function (Bao)
+function getcurrentweather(data0) {
+    Bweather = data0;
+    console.log(Bweather);
+    Bweather.list.forEach(w=>w.weather[0].icon);
     img0 = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
 }
 
@@ -41,6 +51,7 @@ function getnews(data1){
 // time function (Bao)
 function gettime(data2){
     Btime = data2;
+    console.log(Btime)
     // Ngan's time update
     currentDate.textContent = d3.timeFormat('%a, %b %d, %Y')(new Date(Btime.utc_datetime));
     currentTime.textContent = d3.timeFormat('%H:%M')(new Date());

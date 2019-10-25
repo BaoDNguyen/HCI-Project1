@@ -16,9 +16,13 @@ function setup() {
     // My setup for weather (Bao)
     loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
     loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
+    setInterval(asktime(),60000)
+
+
+}
+// timer (Ngan)
+function asktime(){
     loadJSON('http://worldtimeapi.org/api/timezone/America/Eirunepe',gettime);
-
-
 }
 
 // weather function (Bao)
@@ -37,7 +41,9 @@ function getnews(data1){
 // time function (Bao)
 function gettime(data2){
     Btime = data2;
-    console.log(Btime);
+    // Ngan's time update
+    currentDate.textContent = d3.timeFormat('%a, %b %d, %Y')(new Date(Btime.utc_datetime));
+    currentTime.textContent = d3.timeFormat('%H:%M')(new Date());
 }
 
 function draw() {
@@ -46,9 +52,6 @@ function draw() {
     translate(1400,0);
     scale(-1.0,1.0);
     image(capture, 0, 0, 1400, 1050);
-    // Ngan's time update
-    currentDate.textContent = d3.timeFormat('%a, %b %d, %Y')(new Date());
-    currentTime.textContent = d3.timeFormat('%H:%M')(new Date());
     // Bao's trial draw
     translate(1400,0);
     scale(-1.0,1.0);
@@ -66,10 +69,6 @@ function draw() {
         var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(Bnews.results[bln].published_date))/(60*60*1000));
         text(ntime+' hours ago',50,80);  // date
         text(Bnews.results[bln].title,30,100);   // title
-    }
-    if(Btime){
-        fill(0);
-        text(Btime.datetime.substring(11,19),80,150);
     }
 
 }

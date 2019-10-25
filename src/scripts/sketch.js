@@ -42,9 +42,14 @@ function gettime(data2){
 
 function draw() {
     background(100);
+    // Bao adds Oct25-15:45
+    translate(1400,0);
+    scale(-1.0,1.0);
     image(capture, 0, 0, 1400, 1050);
 
     // Bao's trial draw
+    translate(1400,0);
+    scale(-1.0,1.0);
     if(Bweather){
         fill(0);
         text(Bweather.list[0].main.temp,10,10);

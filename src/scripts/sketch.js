@@ -43,26 +43,29 @@ function gettime(data2){
 function draw() {
     background(100);
     image(capture, 0, 0, 1400, 1050);
+    //Bao adds OCt25-16:00
+    translate(1400,0);
+    scale(-1.0,1.0);
 
     // Bao's trial draw
     if(Bweather){
-        fill(0);
-        text(Bweather.list[0].main.temp,10,10);
-        image(img0,20,10);
+        fill(255);
+        text(Bweather.list[0].main.temp,300,10);
+        image(img0,150,10);
     }
     if(Bnews){
-        fill(0);
+        fill(255);
         var numberfeed = 5; // number of news feed is ran over time
-        var timefeed = 60;  // time for displaying each news feed in frames
+        var timefeed = 300;  // time for displaying each news feed in frames
         var bln = (round((frameCount/timefeed))%numberfeed);
-        text(Bnews.results[bln].source,30,50);  //NY times
+        text(Bnews.results[bln].source,300,50);  //NY times
         var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(Bnews.results[bln].published_date))/(60*60*1000));
-        text(ntime+' hours ago',50,80);  // date
-        text(Bnews.results[bln].title,30,100);   // title
+        text(ntime+' hours ago',350,80);  // date
+        text(Bnews.results[bln].title,300,100);   // title
     }
     if(Btime){
-        fill(0);
-        text(Btime.datetime.substring(11,19),80,150);
+        fill(255);
+        text(Btime.datetime.substring(11,19),400,150);
     }
 
 }

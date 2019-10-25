@@ -1,7 +1,13 @@
-html,body{
-    height: 100vh;
-    overflow: hidden;
+:root {
+    --fontSize: 12px
 }
+html, body{
+     height: 100vh;
+     overflow: hidden;
+     color: white;
+     font-size: var(--fontSize);
+}
+
 #mainContent {
     position: absolute;
     top:0;
@@ -43,4 +49,9 @@ html,body{
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+}
+
+/*timebox*/
+#currentTime {
+    font-size: calc(var(--fontSize)*3);
 }

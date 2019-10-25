@@ -13,10 +13,16 @@ function setup() {
     capture.size(1400, 750);
     capture.hide();
 
-    // My setup for weather (Bao)
+    // My setup for weather, news feed (Bao)
     loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
     loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
     setInterval(asktime(),60000)
+
+    // My setup for speech
+    let speechRec = new p5.SpeechRec('en-US',getSpeech);
+    let cont = true;
+    let interim = false;
+    speechRec.start(cont,interim);
 
 
 }

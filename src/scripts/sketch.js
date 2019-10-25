@@ -28,7 +28,9 @@ function getweather(data0) {
 function draw() {
     background(100);
     image(capture, 0, 0, 1400, 1050);
-
+    // Ngan's time update
+    currentDate.textContent = d3.timeFormat('%a, %b %d, %Y')(new Date());
+    currentTime.textContent = d3.timeFormat('%H:%M')(new Date());
     // Bao's trial draw
     if(Bweather){
         fill(0);

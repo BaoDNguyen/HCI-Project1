@@ -1,8 +1,10 @@
 let capture;
 
-//My variables for weather (Bao)
+//My variables for weather and newsfeed (Bao)
 var Bweather;
 var img0;
+var Bnews;
+var Btime;
 
 function setup() {
     let canvas = createCanvas(1400, 750);
@@ -13,7 +15,8 @@ function setup() {
 
     // My setup for weather (Bao)
     loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
-
+    loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
+    loadJSON('http://worldtimeapi.org/api/timezone/America/Eirunepe',gettime);
 
 
 }
@@ -23,6 +26,18 @@ function getweather(data0) {
     Bweather = data0;
     console.log(Bweather);
     img0 = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
+}
+
+// news feed function (Bao)
+function getnews(data1){
+    Bnews = data1;
+    console.log(Bnews);
+}
+
+// time function (Bao)
+function gettime(data2){
+    Btime = data2;
+    console.log(Btime);
 }
 
 function draw() {
@@ -35,6 +50,21 @@ function draw() {
         text(Bweather.list[0].main.temp,10,10);
         image(img0,20,10);
     }
+    if(Bnews){
+        fill(0);
+        var numberfeed = 5; // number of news feed is ran over time
+        var timefeed = 60;  // time for displaying each news feed in frames
+        var bln = (round((frameCount/timefeed))%numberfeed);
+        text(Bnews.results[bln].source,30,50);  //NY times
+        var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(Bnews.results[bln].published_date))/(60*60*1000));
+        text(ntime+' hours ago',50,80);  // date
+        text(Bnews.results[bln].title,30,100);   // title
+    }
+    if(Btime){
+        fill(0);
+        text(Btime.datetime.substring(11,19),80,150);
+    }
+
 }
 
 
@@ -78,4 +108,12 @@ list.rain.3h Rain volume for last 3 hours, mm
 list.snow
 list.snow.3h Snow volume for last 3 hours
 list.dt_txt Data/time of calculation, UTC
+*/
+
+/* News feed data structure
+source: https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=pasteyourkeyhere
+ */
+
+/* Time zone data structure
+source: http://worldtimeapi.org/api/timezone/America/Eirunepe
 */

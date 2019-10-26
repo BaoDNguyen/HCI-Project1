@@ -29,7 +29,6 @@ html, body{
 #mirrorimage canvas{
     width: auto!important;
     height: calc(100vh*7.5/10.4)!important;
-    transform: scaleX(-1);
 }
 
 #overlay_panel{

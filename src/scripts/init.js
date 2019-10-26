@@ -12,11 +12,14 @@ $(function () {
         removeTimeout: 100,
         acceptWidgets: '.grid-stack-item',
         cellHeight: 30,
+        verticalMargin: 5,
         height: mainheight/30,
     };
     $('#left_panel').gridstack(options);
     var grid = $('#left_panel').data('gridstack');
-    grid.addWidget($('.griditem'), 0, 0, 3, 2, true);
+    $('.griditem').each((i,g)=>{
+        grid.addWidget(g, 0, 0, 3, undefined, true);
+    })
 
     $('#right_panel').gridstack(_.defaults({
         float: true

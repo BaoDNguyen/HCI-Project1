@@ -2,7 +2,7 @@ let capture;
 
 //My variables for weather and newsfeed (Bao)
 var Bweather;
-var img0;
+var img0={};
 var Bnews;
 var Btime;
 let speechRec;
@@ -40,7 +40,11 @@ function askData(){
 function getweather(data0) {
     Bweather = data0;
     console.log(Bweather);
-    img0 = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
+    Bweather.list.forEach(list=>{
+        const icon = list.weather[0].icon;
+        if (!img0[icon])
+            img0[icon] = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
+    });
 }
 
 // weather function (Bao)
@@ -81,10 +85,12 @@ function draw() {
     scale(-1.0,1.0);
     image(capture, 0, 0, 1400, 1050);
 
+    translate(1400,0);
+    scale(-1.0,1.0);
     if(Bweather){
         fill(255);
         text(Bweather.list[0].main.temp,300,10);
-        image(img0,150,10);
+        image(img0[Bweather.list[0].weather[0].icon],150,10);
     }
     if(Bnews){
         fill(255);

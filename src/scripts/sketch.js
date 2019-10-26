@@ -5,6 +5,7 @@ var Bweather;
 var img0;
 var Bnews;
 var Btime;
+let speechRec;
 
 
 function setup() {
@@ -14,11 +15,19 @@ function setup() {
     capture.size(1400, 750);
     capture.hide();
 
-    // My setup for weather (Bao)
+    // My setup for weather, news feed (Bao)
     loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
     loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
     askData();
-    setInterval(askData,60000)
+    setInterval(askData,60000);
+
+    // My setup for speech
+    let lang = navigator.language || 'en-US';
+    speechRec = new p5.SpeechRec(lang,mygetSpeech);
+    let cont = true;
+    let interim = false;
+    speechRec.start(cont,interim);
+
 
 }
 // timer (Ngan)
@@ -57,9 +66,17 @@ function gettime(data2){
     currentTime.textContent = d3.timeFormat('%H:%M')(new Date());
 }
 
+//speech function (Bao)
+function mygetSpeech() {
+    if (speechRec.resultValue){
+        createP(speechRec.resultString);
+    }
+    console.log(speechRec);
+}
+
 function draw() {
     background(100);
-    // Bao adds Oct25-15:45
+    //Bao adds OCt25-16:00
     translate(1400,0);
     scale(-1.0,1.0);
     image(capture, 0, 0, 1400, 1050);

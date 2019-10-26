@@ -63,13 +63,7 @@ function draw() {
     translate(1400,0);
     scale(-1.0,1.0);
     image(capture, 0, 0, 1400, 1050);
-    //Bao adds OCt25-16:00
-    translate(1400,0);
-    scale(-1.0,1.0);
 
-    // Bao's trial draw
-    translate(1400,0);
-    scale(-1.0,1.0);
     if(Bweather){
         fill(255);
         text(Bweather.list[0].main.temp,300,10);

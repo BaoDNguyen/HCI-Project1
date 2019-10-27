@@ -67,7 +67,7 @@ function gettime(data2){
     console.log(Btime)
     // Ngan's time update
     currentDate.textContent = d3.timeFormat('%a, %b %d, %Y')(new Date(Btime.utc_datetime));
-    currentTime.textContent = d3.timeFormat('%H:%M')(new Date());
+    currentTime.textContent = d3.timeFormat('%H:%M')(new Date(Btime.utc_datetime));
 }
 
 //speech function (Bao)

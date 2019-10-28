@@ -18,7 +18,7 @@ $(function () {
     $('#left_panel').gridstack(options);
     var grid = $('#left_panel').data('gridstack');
     $('.griditem').each((i,g)=>{
-        grid.addWidget(g, 0, 0, 3, undefined, true);
+        grid.addWidget(g, 0, 0, 3, 2, true);
     })
 
     $('#right_panel').gridstack(_.defaults({

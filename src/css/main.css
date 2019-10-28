@@ -50,7 +50,13 @@ html, body{
                                   supported by Chrome, Opera and Firefox */
 }
 
+.griditem .row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
 /*timebox*/
 #currentTime {
     font-size: calc(var(--fontSize)*3);
 }
+

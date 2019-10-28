@@ -33,7 +33,7 @@ function setup() {
 // timer (Ngan)
 function askData(){
     loadJSON('http://worldtimeapi.org/api/timezone/America/Eirunepe',gettime);
-    // loadJSON('http://api.openweathermap.org/data/2.5/weather?zip=79415,us&APPID=3f2b39ee96bea5d53296ae364ac222de',getcurrentweather);
+    loadJSON('http://api.openweathermap.org/data/2.5/weather?zip=79415,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getcurrentweather);
 }
 
 // weather function (Bao)
@@ -43,16 +43,17 @@ function getweather(data0) {
     Bweather.list.forEach(list=>{
         const icon = list.weather[0].icon;
         if (!img0[icon])
-            img0[icon] = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
+            img0[icon] = loadImage('https://openweathermap.org/img/wn/'+icon+'.png');
     });
 }
 
 // weather function (Bao)
-function getcurrentweather(data0) {
-    Bweather = data0;
-    console.log(Bweather);
-    // Bweather.list.forEach(w=>w.weather[0].icon);
-    img0 = loadImage('https://openweathermap.org/img/wn/'+Bweather.list[0].weather[0].icon+'.png');
+function getcurrentweather(data) {
+    const icon = data.weather[0].icon;
+    if (!img0[icon])
+        img0[icon] = loadImage('https://openweathermap.org/img/wn/'+icon+'.png');
+    weatherIcon.setAttribute('src','https://openweathermap.org/img/wn/'+icon+'.png');
+    weatherTemperature.textContent = data.main.temp;
 }
 
 // news feed function (Bao)
@@ -64,7 +65,6 @@ function getnews(data1){
 // time function (Bao)
 function gettime(data2){
     Btime = data2;
-    console.log(Btime)
     // Ngan's time update
     currentDate.textContent = d3.timeFormat('%a, %b %d, %Y')(new Date(Btime.utc_datetime));
     currentTime.textContent = d3.timeFormat('%H:%M')(new Date(Btime.utc_datetime));

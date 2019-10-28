@@ -101,7 +101,7 @@ function gettime(data2){
 //speech function (Bao)
 function mygetSpeech() {
     if (speechRec.resultValue){
-        createP(speechRec.resultString);
+        M.toast({html:speechRec.resultString})
     }
     console.log(speechRec);
 }

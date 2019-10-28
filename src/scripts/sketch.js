@@ -87,7 +87,7 @@ function getcurrentweather(data) {
 // news feed function (Bao)
 function getnews(data1){
     Bnews = data1;
-    console.log(Bnews);
+    updateNewsFeed()
 }
 
 // time function (Bao)

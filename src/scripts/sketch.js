@@ -6,7 +6,13 @@ var img0={};
 var Bnews;
 var Btime;
 let speechRec;
-
+// timer for news
+let newsfeed_opt = {
+    numberfeed : 10, // number of news feed is ran over time
+    timefeed : 10000,  // time for displaying each news feed in frames
+    num:0
+}
+let timer_NewsFeed;
 
 function setup() {
     let canvas = createCanvas(1400, 750);
@@ -18,6 +24,9 @@ function setup() {
     // Update data every 1 minute - Ngan
     askData();
     setInterval(askData,60000);
+
+    // Update news every 1sec
+    timer_NewsFeed = setTimer_NewsFeed();
 
     // My setup for speech - Bao
     let lang = navigator.language || 'en-US';
@@ -36,6 +45,25 @@ function askData(){
     loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
 }
 
+function setTimer_NewsFeed(){
+    if (timer_NewsFeed)
+        clearInterval(timer_NewsFeed);
+    updateNewsFeed();
+    return setInterval(updateNewsFeed,newsfeed_opt.timefeed)
+}
+function updateNewsFeed(){
+    // only display 10 top news
+    if(Bnews){
+        const bln = newsfeed_opt.num;
+        const current_item = Bnews.results[bln];
+        newsSource.textContent = current_item.source;  //NY times
+        var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(current_item.published_date))/(60*60*1000));
+        newsTime.textContent = ntime+' hours ago';  // date
+        newsTitle.textContent = current_item.title;   // title
+        newsfeed_opt.num = (newsfeed_opt.num+1)%newsfeed_opt.numberfeed;
+        newsthumb.setAttribute('src',current_item.thumbnail_standard||""); // thumbnail
+    }
+}
 // weather function (Bao)
 function getweather(data0) {
     Bweather = data0;
@@ -87,25 +115,7 @@ function draw() {
 
     translate(1400,0);
     scale(-1.0,1.0);
-    if(Bweather){
-        fill(255);
-        text(Bweather.list[0].main.temp,300,10);
-        image(img0[Bweather.list[0].weather[0].icon],150,10);
-    }
-    if(Bnews){
-        var numberfeed = 5; // number of news feed is ran over time
-        var timefeed = 1000;  // time for displaying each news feed in frames
-        var bln = (round((frameCount/timefeed))%numberfeed);
-        text(Bnews.results[bln].source,300,50);  //NY times
-        var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(Bnews.results[bln].published_date))/(60*60*1000));
-        text(ntime+' hours ago',350,80);  // date
-        text(Bnews.results[bln].title,300,100);   // title
-    }
-    if(Btime){
-        fill(255);
-        text(Btime.datetime.substring(11,19),400,150);
-    }
-
+    // normal content go here
 }
 
 

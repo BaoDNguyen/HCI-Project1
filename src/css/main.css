@@ -56,14 +56,14 @@ html, body{
     overflow: visible;
 }
 .grid-stack-item-content .card-panel{
+    padding: 5px;
     height:100%;
 }
 .grid-stack-item-content .card-panel.grey.darken-4{
     background-color: #21212196 !important;
 }
 .griditem .row{
-    margin-left: 0;
-    margin-right: 0;
+    margin:0;
 }
 
 
@@ -93,14 +93,15 @@ html, body{
 .scroll-left {
     overflow: hidden;
     position: relative;
-    height: 1rem;
+    height: 2rem;
 }
 .scroll-left p {
     position: absolute;
     width: 100%;
     height: 100%;
     margin: 0;
-    line-height: 1rem;
+    line-height: 2rem;
+    font-size: 2rem;
     text-align: center;
     white-space: nowrap;
     /* Starting position */

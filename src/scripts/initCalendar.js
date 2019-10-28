@@ -57,7 +57,7 @@
         this.events.forEach(function(ev) {
             ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
         });
-
+        console.log(this.events)
 
         if(this.month) {
             this.oldMonth = this.month;

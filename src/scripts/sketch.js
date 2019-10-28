@@ -15,13 +15,11 @@ function setup() {
     capture.size(1400, 750);
     capture.hide();
 
-    // My setup for weather, news feed (Bao)
-    loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
-    loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
+    // Update data every 1 minute - Ngan
     askData();
     setInterval(askData,60000);
 
-    // My setup for speech
+    // My setup for speech - Bao
     let lang = navigator.language || 'en-US';
     speechRec = new p5.SpeechRec(lang,mygetSpeech);
     let cont = true;
@@ -34,6 +32,8 @@ function setup() {
 function askData(){
     loadJSON('http://worldtimeapi.org/api/timezone/America/Eirunepe',gettime);
     loadJSON('http://api.openweathermap.org/data/2.5/weather?zip=79415,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getcurrentweather);
+    loadJSON('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=w81Gz2Upt9zcVNAmxxcxruEUpkkK8REN',getnews);
+    loadJSON('https://api.openweathermap.org/data/2.5/forecast?q=Lubbock,us&APPID=3f2b39ee96bea5d53296ae364ac222de&units=metric',getweather);
 }
 
 // weather function (Bao)
@@ -53,7 +53,7 @@ function getcurrentweather(data) {
     if (!img0[icon])
         img0[icon] = loadImage('https://openweathermap.org/img/wn/'+icon+'.png');
     weatherIcon.setAttribute('src','https://openweathermap.org/img/wn/'+icon+'.png');
-    weatherTemperature.textContent = data.main.temp;
+    weatherTemperature.textContent = Math.round(data.main.temp);
 }
 
 // news feed function (Bao)
@@ -93,9 +93,8 @@ function draw() {
         image(img0[Bweather.list[0].weather[0].icon],150,10);
     }
     if(Bnews){
-        fill(255);
         var numberfeed = 5; // number of news feed is ran over time
-        var timefeed = 300;  // time for displaying each news feed in frames
+        var timefeed = 1000;  // time for displaying each news feed in frames
         var bln = (round((frameCount/timefeed))%numberfeed);
         text(Bnews.results[bln].source,300,50);  //NY times
         var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(Bnews.results[bln].published_date))/(60*60*1000));

@@ -11,12 +11,13 @@ html, body{
 
 
 #mainContent {
+    --light-color: #0ff;
     position: absolute;
     top:0;
     left: 50%;
     transform: translateX(-50%);
     overflow: hidden;
-    box-shadow: 0px 0px 40px 20px #0ff;
+    box-shadow: 0px 0px 40px 20px var(--light-color);
 }
 #bathroom {
     height: 100vh;

@@ -38,7 +38,7 @@
             <div id = "overlay_panel" class="row">
                 <div class="col s3">
                     <div class="grid-stack grid-stack-3" id="left_panel">
-                        <div class="griditem" >
+                        <div class="griditem" id="WeatherAndTimeHolder">
                             <div class="grid-stack-item-content">
                                 <div class="valign-wrapper" >
                                     <div class="center-align col" style="border-right:white solid 1px;padding-right:20px;">
@@ -54,15 +54,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="griditem" offset-height ="9">
+                        <div class="griditem" offset-height ="9" id="calendarHolder">
                             <div class="grid-stack-item-content">
                                 <div id="calendar"></div>
                             </div>
                         </div>
-                        <div class="griditem">
+                        <div class="griditem" id="newsHolder">
                             <div class="grid-stack-item-content">
                                 <div class="card-panel grey darken-4 z-depth-1 hoverable valign-wrapper">
-                                    <div class="row valign-wrapper">
+                                    <div class="row valign-wrapper" style="width: 100%">
                                         <div class="col s2">
                                             <img  alt="" class="circle responsive-img" id="newsthumb"> <!-- notice the "circle" class -->
                                         </div>

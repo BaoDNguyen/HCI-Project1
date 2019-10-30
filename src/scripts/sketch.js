@@ -77,10 +77,13 @@ function getweather(data0) {
 
 // weather function (Bao)
 function getcurrentweather(data) {
-    const icon = data.weather[0].icon;
-    if (!img0[icon])
-        img0[icon] = loadImage('https://openweathermap.org/img/wn/'+icon+'.png');
-    weatherIcon.setAttribute('src','https://openweathermap.org/img/wn/'+icon+'.png');
+    // const icon = data.weather[0].icon;
+    // if (!img0[icon])
+    //     img0[icon] = loadImage('https://openweathermap.org/img/wn/'+icon+'.png');
+    // wi-owm-night-${data.weather[0].id}
+    // weatherIcon.setAttribute('src','https://openweathermap.org/img/wn/'+icon+'.png');
+    //----- Nice weather icon https://erikflowers.github.io/weather-icons/
+    weatherIcon.setAttribute('class',`wi wi-owm-night-${data.weather[0].id}`);
     weatherTemperature.textContent = Math.round(data.main.temp);
 }
 

@@ -73,8 +73,9 @@ html, body{
     max-height: 30px;
 }
 #weatherIcon {
-    margin-top: -1rem;
-    margin-bottom: -0.5rem;
+    /*margin-top: -1rem;*/
+    /*margin-bottom: -0.5rem;*/
+    font-size: 250%;
 }
 
 /*timebox*/

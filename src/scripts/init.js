@@ -25,7 +25,7 @@ $(function () {
     $('.griditem').each((i,g)=>{
         grid.addWidget(g, 0, 0, 3, g.getAttribute('offset-height')||2, true);
     });
-    
+
     // $('.grid-stack').data('gridstack').remove_widget($('#itemId'));
 
     $('#right_panel').gridstack(_.defaults({

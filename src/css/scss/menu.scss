@@ -1,7 +1,10 @@
+:root {
+  --color-menu: #009de7;
+}
 @import "compass/css3";
 
 //vars
-$fg:#e91e63;
+$fg:var(--color-menu);
 $bg:#8bc34a;
 $pi:3.14;
 

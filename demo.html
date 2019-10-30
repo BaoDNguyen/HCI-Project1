@@ -29,6 +29,11 @@
     <script src="src/lib/lodash.min.js"></script>
     <script src="src/lib/gridstack.min.js"></script>
     <script src="src/lib/gridstack.jQueryUI.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
 </head>
 
 <body>
@@ -82,15 +87,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="griditem" offset-height ="2">
-                            <div class="grid-stack-item-content">
-                                <i class="material-icons tiny dragIcon">pan_tool</i>
-                                <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            </div>
-                        </div>
+                        <!--<div class="griditem" offset-height ="2">-->
+                            <!--<div class="grid-stack-item-content">-->
+                                <!--<i class="material-icons tiny dragIcon">pan_tool</i>-->
+                                <!--<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                 </div>
-                <div class="col s3 offset-s9">
+                <div class="col s3 push-s6">
                     <div class="grid-stack grid-stack-3" id="right_panel">
                     </div>
                 </div>
@@ -134,6 +139,12 @@
             </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="griditem" offset-height ="2" id="musicplayer">
+    <div class="grid-stack-item-content">
+        <i class="material-icons tiny dragIcon">pan_tool</i>
+        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
 <!--JavaScript at end of body for optimized loading-->

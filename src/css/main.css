@@ -54,7 +54,9 @@ html, body{
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }
-
+.grid-stack {
+    min-height: 100%; /* avoid disapear grid*/
+}
 .grid-stack .griditem .grid-stack-item-content {
     overflow: visible;
 }

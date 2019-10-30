@@ -28,7 +28,9 @@ html, body{
     background-position: top;
     background-size: auto 100%;
 }
-
+#mirrorimage {
+    height: calc(100vh*7.5/10.4);
+}
 #mirrorimage canvas{
     width: auto!important;
     height: calc(100vh*7.5/10.4)!important;
@@ -59,6 +61,7 @@ html, body{
 .grid-stack-item-content .card-panel{
     padding: 5px;
     height:100%;
+    margin-top: 0;
 }
 .grid-stack-item-content .card-panel.grey.darken-4{
     background-color: #21212196 !important;
@@ -66,7 +69,22 @@ html, body{
 .griditem .row{
     margin:0;
 }
+.griditem iframe {
+    width: 100%;
+    height: 100%;
+}
 
+.dragIcon {
+    padding: 5px;
+    cursor: all-scroll;
+    z-index: 99;
+    position: absolute;
+    right: 0;
+    display: none;
+}
+.grid-stack-item-content:hover .dragIcon {
+    display: unset;
+}
 
 .thumb {
     overflow: hidden;

@@ -17,7 +17,7 @@ $(function () {
         acceptWidgets: '.grid-stack-item',
         cellHeight: 30,
         verticalMargin: 5,
-        height: mainheight/30,
+        height: Math.floor(mainheight/35),
     };
 
     $('#left_panel').gridstack(options);

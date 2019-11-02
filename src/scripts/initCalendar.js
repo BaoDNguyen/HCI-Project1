@@ -5,8 +5,9 @@ var calendar
 
     function Calendar(selector, events) {
         this.el = document.querySelector(selector)||this.el;
-        this.events = events;
+        this.eventsAll = events;
         this.current = moment().date(1);
+        this.selected = this.current.format('ddd DD')
         this.draw();
         var current = document.querySelector('.today');
         if(current) {
@@ -16,7 +17,15 @@ var calendar
             }, 500);
         }
     }
-
+    Calendar.prototype.update = function(events){
+        this.eventsAll = events;
+        this.drawMonth();
+        var current = $(`div[data-date="${this.selected}"]`)[0];
+            var self = this;
+            window.setTimeout(function() {
+                self.openDay($(`div[data-date="${self.selected}"]`)[0]);
+            }, 500);
+    }
     Calendar.prototype.draw = function() {
         //Create Header
         this.drawHeader();
@@ -51,19 +60,31 @@ var calendar
 
         this.title.innerHTML = this.current.format('MMMM YYYY');
     }
-    function getRange(){
-        return [moment().format('ddd')]
-    }
+
     Calendar.prototype.drawMonth = function() {
         var self = this;
-
-        this.events
-        //     .filter(function(ev){
-        //    return ev.start>= self.current._d
-        // });
-            .forEach(function(ev) {
-            ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+        var rangeM = [self.current.clone().date(1).isoWeekday(0),self.current.clone().date(1).isoWeekday(7*5-1)];
+        var eventsshort = this.eventsAll
+            .filter(function(ev){
+                ev.sdata = moment(ev.start);
+                ev.edata = moment(ev.end);
+           return (new Date(ev.end) >= rangeM[0]._d)|| ((new Date(ev.start) >= rangeM[0]._d)&&(new Date(ev.start) <= rangeM[1]._d));
         });
+        this.events = [];
+        for (let m in eventsshort){
+            let ev = eventsshort[m];
+            let tempd = moment(Math.max(ev.sdata,rangeM[0]));
+            let tempe = moment(Math.min(ev.edata,rangeM[1]));
+            while (tempd<tempe){
+                let newel = jQuery.extend(true, {}, ev);
+                newel.date = tempd.clone();
+                this.events.push(newel)
+                tempd.add(1, 'days');
+            }
+        }
+        //     .forEach(function(ev) {
+        //     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+        // });
         // console.log(this.events)
 
         if(this.month) {
@@ -136,6 +157,7 @@ var calendar
 
         //Outer Day
         var outer = createElement('div', this.getDayClass(day));
+        outer.setAttribute('data-date',day.format('ddd DD'))
         outer.addEventListener('click', function() {
             self.openDay(this);
         });
@@ -187,9 +209,8 @@ var calendar
         var details, arrow;
         var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
         var day = this.current.clone().date(dayNumber);
-
         var currentOpened = document.querySelector('.details');
-
+        this.selected = el.getAttribute('data-date');
         //Check to see if there is an open detais box on the current row
         if(currentOpened && currentOpened.parentNode === el.parentNode) {
             details = currentOpened;

@@ -1,5 +1,8 @@
 let height = window.innerHeight;
 let mainheight;
+let mainSetting = {
+  calendar: {isSignin:false}
+};
 $(function () {
     mainheight = $('#overlay_panel').innerHeight();
 

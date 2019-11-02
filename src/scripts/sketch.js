@@ -57,8 +57,7 @@ function updateNewsFeed(){
         const bln = newsfeed_opt.num;
         const current_item = Bnews.results[bln];
         newsSource.textContent = current_item.source;  //NY times
-        var ntime = ceil((Date.parse(Btime.datetime) - Date.parse(current_item.published_date))/(60*60*1000));
-        newsTime.textContent = ntime+' hours ago';  // date
+        newsTime.textContent = moment(new Date(current_item.published_date)).fromNow();  // date
         newsTitle.textContent = current_item.title;   // title
         newsfeed_opt.num = (newsfeed_opt.num+1)%newsfeed_opt.numberfeed;
         newsthumb.setAttribute('src',current_item.thumbnail_standard||""); // thumbnail

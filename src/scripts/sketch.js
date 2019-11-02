@@ -14,6 +14,9 @@ let newsfeed_opt = {
 }
 let timer_NewsFeed;
 
+//Variables for controls
+let hello = false;
+
 function setup() {
     let canvas = createCanvas(1400, 750);
     canvas.parent('mirrorimage');
@@ -29,7 +32,7 @@ function setup() {
     timer_NewsFeed = setTimer_NewsFeed();
 
     // My setup for speech - Bao
-    let lang = navigator.language || 'en-US';
+    let lang = 'en-US';
     speechRec = new p5.SpeechRec(lang,mygetSpeech);
     let cont = true;
     let interim = false;
@@ -103,7 +106,8 @@ function gettime(data2){
 //speech function (Bao)
 function mygetSpeech() {
     if (speechRec.resultValue){
-        M.toast({html:speechRec.resultString})
+        M.toast({html:speechRec.resultString});
+        if (speechRec.resultString === "Circle") hello = true;
     }
     console.log(speechRec);
 }
@@ -118,6 +122,8 @@ function draw() {
     translate(1400,0);
     scale(-1.0,1.0);
     // normal content go here
+
+    if (hello) ellipse(700,400,50,50);
 }
 
 

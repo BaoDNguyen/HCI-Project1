@@ -54,10 +54,14 @@
     Calendar.prototype.drawMonth = function() {
         var self = this;
 
-        this.events.forEach(function(ev) {
-            ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+        this.events
+            .filter(function(ev){
+           return ev.duration.start>= self.current._d
         });
-        console.log(this.events)
+        //     .forEach(function(ev) {
+        //     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+        // });
+        // console.log(this.events)
 
         if(this.month) {
             this.oldMonth = this.month;

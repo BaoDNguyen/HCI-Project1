@@ -16,7 +16,7 @@ let newsfeed_opt = {
 };
 let timer_NewsFeed;
 
-//Variables for controls - Bao
+//Variables for speech controls - Bao
 let hello = false;
 let controlnews = false;
 let controlcalendar = false;
@@ -27,6 +27,8 @@ let controlyoutube = false;
 let controlchatmusics0 = false;
 let controlmusics1 = false;
 let bot;
+let user_input;
+let output;
 
 function setup() {
     let canvas = createCanvas(1400, 750);
@@ -50,20 +52,23 @@ function setup() {
     speechRec.start(cont,interim);
     speech = new p5.Speech();
 
-    // Rivescript bot
+    // speech bot
     bot = new RiveScript();
-    var files = ['brain/brain.rive'];
-    bot.loadFile(files, botLoaded, errorLoading);
+    var files = ["src/scripts/brain.rive"];
+    bot.loadFile(files).then(brainReady).catch(brainError);
     // The bot is ready
-    function botLoaded() {
+    function brainReady() {
         console.log("Bot loaded");
         bot.sortReplies();
     }
     // There was a problem
-    function errorLoading(error) {
+    function brainError(error) {
         console.log("Error when loading rivescript files: " + error);
     }
-    
+
+    user_input = select('#user_input');
+    output = select('#output');
+
 
 
 }
@@ -134,66 +139,42 @@ function gettime(data2){
 function mygetSpeech() {
     if (speechRec.resultValue){
         M.toast({html:speechRec.resultString});
-        let input = speechRec.resultString;
-        user_input.value(input);
-        let reply = bot.reply("local-user",input);
+        bot.reply("local-user",speechRec.resultString).then(r=>{
+            console.log(r);
+            speech.speak(r);
+            M.toast({html:r});
+        });
         let keywords = speechRec.resultString.toLowerCase().split(" ");
-        // if (keywords.includes("circle")) hello = true;
-        // if (keywords.includes("open") && keywords.includes("news")) {
-        //     controlnews = true;
-        //     speech.speak("news feed is opened");
-        // }
-        // if (keywords.includes("close") && keywords.includes("news")) {
-        //     controlnews = false;
-        //     speech.speak("news feed is closed");
-        // }
-        // if (keywords.includes("open") && keywords.includes("calendar")) {
-        //     controlcalendar = true;
-        //     speech.speak("calendar is opened");
-        // }
-        // if (keywords.includes("close") && keywords.includes("calendar")) {
-        //     controlcalendar = false;
-        //     speech.speak("calendar is closed");
-        // }
-        // if (keywords.includes("open") && keywords.includes("musics")) {
-        //     controlmusics = true;
-        //     speech.speak("musics player is opened");
-        // }
-        // // if (keywords.includes("music")) {
-        // //     controlchatmusics0 = true;
-        // //     speech.speak("Do you want to listen to some songs?")
-        // // }
-        // // if (controlchatmusics0) {
-        // //     if (keywords.includes("yes")) {
-        // //         controlmusics = true;
-        // //         speech.speak("the player is opened");
-        // //     }
-        // //     controlchatmusics0 = false;
-        // // }
-        // // if (controlmusics) {
-        // //     if (keywords.includes("change")) {
-        // //         controlmusics1 = true; // variable for changing song! after changing, turn it to false
-        // //         speech.speak("Okay! I've changed to another song!");
-        // //     }
-        // // }
-        // if (keywords.includes("close") && keywords.includes("music")) {
-        //     controlmusics = false;
-        //
-        //     speech.speak("musics player is closed");
-        // }
-        // if (keywords.includes("open") && keywords.includes("health")) {
-        //     controlhealth = true;
-        //     speech.speak("health kit is opened");
-        // }
-        // if (keywords.includes("close") && keywords.includes("health")) {
-        //     controlhealth = false;
-        //     speech.speak("health kit is closed");
-        // }
+        if (keywords.includes("open") && keywords.includes("news")) {
+            controlnews = true;
+        }
+        if (keywords.includes("close") && keywords.includes("news")) {
+            controlnews = false;
+        }
+        if (keywords.includes("open") && keywords.includes("calendar")) {
+            controlcalendar = true;
+        }
+        if (keywords.includes("close") && keywords.includes("calendar")) {
+            controlcalendar = false;
+        }
+        if (keywords.includes("open") && keywords.includes("music")) {
+            controlmusics = true;
+        }
+        if (keywords.includes("close") && keywords.includes("music")) {
+            controlmusics = false;
+        }
+        if (keywords.includes("open") && keywords.includes("health")) {
+            controlhealth = true;
+        }
+        if (keywords.includes("close") && keywords.includes("health")) {
+            controlhealth = false;
+        }
 
 
     }
     console.log(speechRec);
 }
+
 
 function draw() {
     background(100);
@@ -206,7 +187,7 @@ function draw() {
     scale(-1.0,1.0);
     // normal content go here
 
-    if (hello) ellipse(700,400,50,50);
+
 }
 
 

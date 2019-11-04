@@ -1,17 +1,103 @@
 ! version = 2.0
 
+! var time = 3:30
+! var date = Wednesday
+! var weather = nice
+
+! sub i'm       = i am
+! sub i'd       = i would
+! sub i've      = i have
+! sub i'll      = i will
+! sub don't     = do not
+! sub isn't     = is not
+! sub you'd     = you would
+! sub you're    = you are
+! sub you've    = you have
+! sub you'll    = you will
+! sub he'd      = he would
+! sub he's      = he is
+! sub he'll     = he will
+! sub she'd     = she would
+! sub she's     = she is
+! sub she'll    = she will
+! sub they'd    = they would
+! sub they're   = they are
+! sub they've   = they have
+! sub they'll   = they will
+! sub we'd      = we would
+! sub we're     = we are
+! sub we've     = we have
+! sub we'll     = we will
+! sub whats     = what is
+! sub what's    = what is
+! sub what're   = what are
+! sub what've   = what have
+! sub what'll   = what will
+! sub can't     = can not
+! sub whos      = who is
+! sub who's     = who is
+! sub who'd     = who would
+! sub who'll    = who will
+! sub don't     = do not
+! sub didn't    = did not
+! sub it's      = it is
+
 + hello
 - Hello human.
-
-+ my name is *
-- <set name=<formal>>Nice to meet you, <get name>.
-
-+ (what is my name|who am i)
-- You're <get name>, right?
 
 + *
 - I don't have a reply for that.
 - Try asking that a different way.
 
-+ * news *
-- There are some interting
++ [*] (what|tell) [*] time [*]
+- time_query
+
++ [*] what [*] weather [*] today [*]
+// * <bot weather> == nice => Today is quite beautiful for going out.
+// * <bot weather> == rainny => There might be rain today.
+// * <bot weather> == windy => It might be cold today.
+- weather_on
+
++ [*] (event|events) [*]
+- I found no upcoming event this week.
+- You have a presentation today.
+
++ [*] news [*]
+- There are some interesting news on NewYork Times today. \n
+^ Do you want to read them?
+
+    + [*] open [*] news [*]
+- news_on
+
++ [*] (listen|music|song|sing) [*]
+- music_on
+
++ [*] change [*] song [*]
+- Well, I thouhgt you love this song, what's about this one?
+- Okay, let try this song.
+
++ [*] (turn|turn off) [*] (light|light off) [*]
+- light_off
+
++ [*] (health|my health) [*]
+- health_on
+
+
++ [*] (watch|open) [*] (youtube|video|videos) [*]
+- video_on
+
++ [*] twitter [*]
+- twitter_on
+
++ [*] tell [*] joke [*]
+- Your group did a really good job! \n
+^ Give you guys A plus. \n
+^ Ha ha ha ha ha ha.
+
++ [*] change [*] light [*] color [*]
+- light_color
+
++ [*] change [*] color [*] light [*]
+- light_color
++ (thanks|thank you)
+- You're welcome

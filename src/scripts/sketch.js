@@ -29,6 +29,22 @@ let controlmusics1 = false;
 let bot;
 let user_input;
 let output;
+let speechdic = {music_on:["Let me play some songs",
+    "I will play some songs on the internet",
+    "Let me choose a song from your favorite list"],
+    news_on: ["Of course. Take your time."],
+    light_off: ["Okay, human."],
+    health_on: ["You walk a lot this week.",
+    "You slept well last night."],
+    video_on: ["Okay, let search on Youtube."],
+    twitter_on: ["Let read some tweets."],
+    time_query: ["It is around "],
+    weather_on: ["Today is "],
+    light_color: ["This might make you warm",
+        "This color is cool",
+        "I feel creative today",
+        "I know you love this color"],
+};
 
 function setup() {
     let canvas = createCanvas(1400, 750);
@@ -141,34 +157,37 @@ function mygetSpeech() {
         M.toast({html:speechRec.resultString});
         bot.reply("local-user",speechRec.resultString).then(r=>{
             console.log(r);
+            if (speechdic[r]){
+                r = speechdic[r][Math.floor(random(0,speechdic[r].length-1))];
+            }
             speech.speak(r);
             M.toast({html:r});
         });
         let keywords = speechRec.resultString.toLowerCase().split(" ");
-        if (keywords.includes("open") && keywords.includes("news")) {
-            controlnews = true;
-        }
-        if (keywords.includes("close") && keywords.includes("news")) {
-            controlnews = false;
-        }
-        if (keywords.includes("open") && keywords.includes("calendar")) {
-            controlcalendar = true;
-        }
-        if (keywords.includes("close") && keywords.includes("calendar")) {
-            controlcalendar = false;
-        }
-        if (keywords.includes("open") && keywords.includes("music")) {
-            controlmusics = true;
-        }
-        if (keywords.includes("close") && keywords.includes("music")) {
-            controlmusics = false;
-        }
-        if (keywords.includes("open") && keywords.includes("health")) {
-            controlhealth = true;
-        }
-        if (keywords.includes("close") && keywords.includes("health")) {
-            controlhealth = false;
-        }
+        // if (keywords.includes("open") && keywords.includes("news")) {
+        //     controlnews = true;
+        // }
+        // if (keywords.includes("close") && keywords.includes("news")) {
+        //     controlnews = false;
+        // }
+        // if (keywords.includes("open") && keywords.includes("calendar")) {
+        //     controlcalendar = true;
+        // }
+        // if (keywords.includes("close") && keywords.includes("calendar")) {
+        //     controlcalendar = false;
+        // }
+        // if (keywords.includes("open") && keywords.includes("music")) {
+        //     controlmusics = true;
+        // }
+        // if (keywords.includes("close") && keywords.includes("music")) {
+        //     controlmusics = false;
+        // }
+        // if (keywords.includes("open") && keywords.includes("health")) {
+        //     controlhealth = true;
+        // }
+        // if (keywords.includes("close") && keywords.includes("health")) {
+        //     controlhealth = false;
+        // }
 
 
     }

@@ -66,6 +66,7 @@ function loadTweets() {
             t.user.profile_image = loadImage(t.user.profile_image_url);
         });
     }
+    return tweets;
 }
 function loadHealths() {
     var userId = firebase.auth().currentUser.uid;

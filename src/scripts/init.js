@@ -1,23 +1,60 @@
 let height = window.innerHeight;
 let mainheight;
 let mainSetting = {
-  calendar: {isSignin:false}
+    calendar: {isSignin: false}
 };
 $(function () {
     mainheight = $('#overlay_panel').innerHeight();
-    $( ".draggable" ).draggable({ snap: true , handle: '.dragIcon'});
+    $(".draggable").draggable({snap: true, handle: '.dragIcon'});
     // menu
-    d3.select('.menu-open').on('change',function(){
-        d3.select('.menu').classed('active',$(this).prop('checked'));
+    d3.select('.menu-open').on('change', function () {
+        d3.select('.menu').classed('active', $(this).prop('checked'));
     });
 
     // healthBtn
     d3.select('#healthBtn').on('click', function () {
-       loadHealths();
+        loadHealths();
+
+    });
+
+    //twitterBtn
+    d3.select('#twitterBtn').on('click', function () {
+        let tweets = loadTweets();
+
+        console.log(tweets);
+
+
+        let tweetsUl = d3.select("#twitterPanel").append("ul")
+            .attr("class", "collection");
+
+        let tweetLi = tweetsUl
+            .selectAll("li")
+            .data(tweets.data)
+            .enter()
+            .append("li")
+            .attr("class", "collection-item avatar");
+
+        tweetLi.append("img")
+            .attr("class", "circle")
+            .attr("src", d => d.user.profile_image_url);
+
+        tweetLi.append("span")
+            .attr("class", "title")
+            .style("color", "black")
+            .text(d => d.user.name);
+
+        tweetLi.append("p")
+            .attr("class", "timedisplay")
+            .style("color", "black")
+            .text(d => d.created_at);
+
+        tweetLi.append("p")
+            .style("color", "black")
+            .text(d => d.text);
     });
 
     // musicBtn
-    d3.select('#musicBtn').on('click',function(){
+    d3.select('#musicBtn').on('click', function () {
         let isactive = d3.select('#musicBtn').classed('active');
         if (isactive)
             $('.grid-stack').data('gridstack').removeWidget($('#musicplayer'));
@@ -27,8 +64,8 @@ $(function () {
                 '        <i class="material-icons tiny dragIcon">pan_tool</i>\n' +
                 '        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>\n' +
                 '    </div>\n' +
-                '</div>'), 0, 0, 3, musicplayer.getAttribute('offset-height')||2, true);
-        d3.select('#musicBtn').classed('active',!isactive)
+                '</div>'), 0, 0, 3, musicplayer.getAttribute('offset-height') || 2, true);
+        d3.select('#musicBtn').classed('active', !isactive)
     });
 
     // grid - https://github.com/gridstack/gridstack.js
@@ -40,13 +77,13 @@ $(function () {
         acceptWidgets: '.grid-stack-item',
         cellHeight: 30,
         verticalMargin: 5,
-        height: Math.floor(mainheight/35),
+        height: Math.floor(mainheight / 35),
     };
 
     $('#left_panel').gridstack(options);
     var grid = $('#left_panel').data('gridstack');
-    $('#left_panel .griditem').each((i,g)=>{
-        grid.addWidget(g, 0, 0, 3, g.getAttribute('offset-height')||2, true);
+    $('#left_panel .griditem').each((i, g) => {
+        grid.addWidget(g, 0, 0, 3, g.getAttribute('offset-height') || 2, true);
     });
 
 
@@ -65,11 +102,12 @@ $(function () {
             hidden: false, //  shows or hides history block
             colors: [] // ['red', 'green', 'rgba(255, 1, 128, 1)']
         }
-        });
-    mirror_light_color.on('change', function(color) {
-        mainContent.style.setProperty('--light-color',color.hex);
-        document.documentElement.style.setProperty('--color-menu',color.hex); // change color of menu
     });
+    mirror_light_color.on('change', function (color) {
+        mainContent.style.setProperty('--light-color', color.hex);
+        document.documentElement.style.setProperty('--color-menu', color.hex); // change color of menu
+    });
+
 
     // $('.colorpicker-theme').on('change', function () {
     //     var val = $(this).val();

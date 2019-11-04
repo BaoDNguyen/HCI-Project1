@@ -244,11 +244,13 @@ input[type="range"]#global-large-song-slider {
   margin-top: -74px;
   -webkit-appearance: none;
   z-index: 9999;
-  background-color: inherit;
+  background-color: transparent;
   margin-left: auto;
   margin-right: auto;
   display: block; }
-
+::-ms-fill-lower {
+  background: rgba(253, 255, 248, 0.4);
+}
 input[type="range"]#global-large-song-slider:focus {
   outline: none; }
 
@@ -325,7 +327,7 @@ div#visualizations-player {
   Large Only
 */
 div#visualizations-player-playlist {
-  background-color: #482D57;
+  background-color: #000000a3;
   border-radius: 20px;
   position: absolute;
   top: 0;

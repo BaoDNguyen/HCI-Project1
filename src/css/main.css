@@ -1,5 +1,6 @@
 :root {
-    --fontSize: 10px
+    --fontSize: 10px;
+    --backcolor: #21212196;
 }
 html, body{
      height: 100vh;
@@ -7,7 +8,32 @@ html, body{
      color: white;
      font-size: var(--fontSize);
 }
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
 
+/* total width */
+*::-webkit-scrollbar {
+    background-color: transparent;;
+    width:10px
+}
+
+/* background of the scrollbar except button or resizer */
+*::-webkit-scrollbar-track {
+    background-color:transparent;
+}
+
+
+/* scrollbar itself */
+*::-webkit-scrollbar-thumb {
+    background-color:#babac0;
+    border-radius:10px;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background-color:#a0a0a5;
+}
+
+/* set button(top and bottom of the scrollbar) */
+*::-webkit-scrollbar-button {display:none}
 
 
 #mainContent {
@@ -66,7 +92,7 @@ html, body{
     margin-top: 0;
 }
 .grid-stack-item-content .card-panel.grey.darken-4{
-    background-color: #21212196 !important;
+    background-color: var(--backcolor) !important;
 }
 .griditem .row{
     margin:0;
@@ -82,6 +108,9 @@ html, body{
     z-index: 99;
     position: absolute;
     right: 0;
+    display: none;
+}
+.disable:hover .dragIcon {
     display: none;
 }
 .grid-stack-item-content:hover .dragIcon {
@@ -173,4 +202,30 @@ html, body{
 }
 .timedisplay{
     font-size: 12px;
+}
+.collection {
+    border: unset;
+}
+.collection .collection-item {
+    border-radius: 2px;
+    background-color: var(--backcolor);
+    border-bottom: unset;
+}
+.collection .collection-item {
+    margin-bottom: 5px;
+}
+
+#twitterPanel {
+    height: 100%;
+    overflow: auto;
+}
+
+.ui-widget-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.ui-widget-content.disable{
+    display: none;
 }

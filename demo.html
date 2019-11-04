@@ -50,6 +50,7 @@
         <div id ="mainContent">
             <div id ="mirrorimage"></div>
             <div id = "overlay_panel" class="row">
+                <div class = "col s12">
                 <div class="col s3">
                     <div class="grid-stack grid-stack-3" id="left_panel">
                         <div class="griditem" id="WeatherAndTimeHolder">
@@ -102,22 +103,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s6" style="display: none">
-                    <div class="draggable ui-widget-content grid-stack-item-content" style="width: 300px;height: 550px">
+                <div class="col s6">
+                    <div class="draggable ui-widget-content grid-stack-item-content" style="width: 300px;height: 550px; margin-top:-275px; margin-left:-150px">
                         <i class="material-icons tiny dragIcon">pan_tool</i>
                         <iframe id="musicPlayer_full" src="src/component/visualizationsmusic/index.html" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>
-                </div>
-
-                <div class="col s6">
-                    <div class="draggable ui-widget-content grid-stack-item-content" style="width: 300px;height: 550px">
+                    <div class="draggable ui-widget-content grid-stack-item-content" style="width: 300px;height: 550px; margin-top:-275px; margin-left:-150px">
                         <i class="material-icons tiny dragIcon">pan_tool</i>
                         <div id ="twitterPanel"></div>
                     </div>
                 </div>
+
                 <div class="col s3 push-s6">
                     <div class="grid-stack grid-stack-3" id="right_panel">
                     </div>
+                </div>
                 </div>
                 <div class="menu">
                     <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
@@ -161,12 +161,12 @@
         </div>
     </div>
 </div>
-<div class="griditem" offset-height ="2" id="musicplayer">
-    <div class="grid-stack-item-content">
-        <i class="material-icons tiny dragIcon">pan_tool</i>
-        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div>
-</div>
+<!--<div class="griditem" offset-height ="2" id="musicplayer">-->
+    <!--<div class="grid-stack-item-content">-->
+        <!--<i class="material-icons tiny dragIcon">pan_tool</i>-->
+        <!--<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>-->
+    <!--</div>-->
+<!--</div>-->
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="src/lib/materialize.min.js"></script>
 <script src="src/lib/moment.min.js"></script>

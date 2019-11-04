@@ -5,7 +5,7 @@ let mainSetting = {
 };
 $(function () {
     mainheight = $('#overlay_panel').innerHeight();
-    $(".draggable").draggable({snap: true, handle: '.dragIcon'});
+    $(".draggable").draggable({snap: true, handle: '.dragIcon', stack: ".draggable"});
     // menu
     d3.select('.menu-open').on('change', function () {
         d3.select('.menu').classed('active', $(this).prop('checked'));
@@ -13,44 +13,56 @@ $(function () {
 
     // healthBtn
     d3.select('#healthBtn').on('click', function () {
-        loadHealths();
+        let isactive = d3.select(this).classed('disable');
+        if (isactive) {
+            loadHealths();
+        }else{
 
+        }
+        d3.select(this).classed('disable',!isactive)
     });
 
     //twitterBtn
     d3.select('#twitterBtn').on('click', function () {
-        let tweets = loadTweets();
+        let isactive = d3.select(this).classed('disable');
+        if (isactive) {
+            let tweets = loadTweets();
 
-        console.log(tweets);
+            let tweetsUl = d3.select("#twitterPanel").select('ul');
+            if (tweetsUl.empty())
+                tweetsUl = d3.select("#twitterPanel").append("ul")
+                    .attr("class", "collection");
 
+            let tweetLi = tweetsUl
+                .selectAll("li")
+                .data(tweets.data,d=>d.created_at);
+            tweetLi.exit().remove();
+            let tweetLi_n = tweetLi
+                .enter()
+                .append("li")
+                .attr("class", "collection-item avatar");
 
-        let tweetsUl = d3.select("#twitterPanel").append("ul")
-            .attr("class", "collection");
+            tweetLi_n.append("img")
+                .attr("class", "circle");
 
-        let tweetLi = tweetsUl
-            .selectAll("li")
-            .data(tweets.data)
-            .enter()
-            .append("li")
-            .attr("class", "collection-item avatar");
+            tweetLi_n.append("span")
+                .attr("class", "title");
 
-        tweetLi.append("img")
-            .attr("class", "circle")
-            .attr("src", d => d.user.profile_image_url);
+            tweetLi_n.append("p")
+                .attr("class", "timedisplay");
 
-        tweetLi.append("span")
-            .attr("class", "title")
-            .style("color", "black")
-            .text(d => d.user.name);
+            tweetLi_n.append("p")
+                .attr("class", "abstract truncate");
+            tweetLi = tweetsUl
+                .selectAll("li");
+            tweetLi.select('img').attr("src", d => d.user.profile_image_url);
+            tweetLi.select('span.title').text(d => d.user.name);
+            tweetLi.select('p.timedisplay').text(d => moment(new Date(d.created_at)).fromNow());
+            tweetLi.select('p.abstract').text(d => d.text);
+        }else{
 
-        tweetLi.append("p")
-            .attr("class", "timedisplay")
-            .style("color", "black")
-            .text(d => d.created_at);
-
-        tweetLi.append("p")
-            .style("color", "black")
-            .text(d => d.text);
+        }
+        d3.select(this).classed('disable',!isactive)
     });
 
     // musicBtn
@@ -109,11 +121,6 @@ $(function () {
     });
 
 
-    // $('.colorpicker-theme').on('change', function () {
-    //     var val = $(this).val();
-    //     var style = '<link id="colorpicker-style" rel="stylesheet" href="' + val + '">';
-    //     $('head').append(style);
-    // });
 });
 
 // // tweet

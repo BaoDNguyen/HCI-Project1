@@ -5,10 +5,15 @@ let mainSetting = {
 };
 $(function () {
     mainheight = $('#overlay_panel').innerHeight();
-
+    $( ".draggable" ).draggable({ snap: true , handle: '.dragIcon'});
     // menu
     d3.select('.menu-open').on('change',function(){
         d3.select('.menu').classed('active',$(this).prop('checked'));
+    });
+
+    // healthBtn
+    d3.select('#healthBtn').on('click', function () {
+       loadHealths();
     });
 
     // musicBtn

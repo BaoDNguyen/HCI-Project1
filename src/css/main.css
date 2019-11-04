@@ -237,5 +237,6 @@ Not supports in Firefox and IE */
     border: 2px solid white;
 }
 .healthIcon i {
-    font-size: 15px;
+    font-size: 17px;
+    margin-left: 3px;
 }

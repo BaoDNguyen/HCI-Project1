@@ -158,7 +158,15 @@ function mygetSpeech() {
         bot.reply("local-user",speechRec.resultString).then(r=>{
             console.log(r);
             if (speechdic[r]){
-                r = speechdic[r][Math.floor(random(0,speechdic[r].length-1))];
+                switch (r){
+                    case "time_query" :
+                        r = speechdic[r]+moment(Btime.utc_datetime).format('h:mm:ss a');
+                        console.log(r);
+                        break;
+                    default:
+                        r = speechdic[r][Math.floor(random(0,speechdic[r].length-1))];
+                        break;
+                }
             }
             speech.speak(r);
             M.toast({html:r});

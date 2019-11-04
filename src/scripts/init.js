@@ -15,9 +15,10 @@ $(function () {
     d3.select('#healthBtn').on('click', function () {
         let isactive = d3.select(this).classed('disable');
         if (isactive) {
+            activemenu(d3.select('#healthHolder'));
             loadHealths();
         }else{
-
+            disablemenu(d3.select('#healthHolder'));
         }
         d3.select(this).classed('disable',!isactive)
     });
@@ -26,6 +27,7 @@ $(function () {
     d3.select('#twitterBtn').on('click', function () {
         let isactive = d3.select(this).classed('disable');
         if (isactive) {
+            activemenu(d3.select('#twitterHolder'));
             let tweets = loadTweets();
 
             let tweetsUl = d3.select("#twitterPanel").select('ul');
@@ -60,24 +62,20 @@ $(function () {
             tweetLi.select('p.timedisplay').text(d => moment(new Date(d.created_at)).fromNow());
             tweetLi.select('p.abstract').text(d => d.text);
         }else{
-
+            disablemenu(d3.select('#twitterHolder'));
         }
-        d3.select(this).classed('disable',!isactive)
+        d3.select(this).classed('disable',!isactive);
     });
 
     // musicBtn
     d3.select('#musicBtn').on('click', function () {
-        let isactive = d3.select('#musicBtn').classed('active');
-        if (isactive)
-            $('.grid-stack').data('gridstack').removeWidget($('#musicplayer'));
-        else
-            $('#left_panel').data('gridstack').addWidget($('<div class="griditem" offset-height ="2" id="musicplayer">\n' +
-                '    <div class="grid-stack-item-content">\n' +
-                '        <i class="material-icons tiny dragIcon">pan_tool</i>\n' +
-                '        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>\n' +
-                '    </div>\n' +
-                '</div>'), 0, 0, 3, musicplayer.getAttribute('offset-height') || 2, true);
-        d3.select('#musicBtn').classed('active', !isactive)
+        let isactive = d3.select('#musicBtn').classed('disable');
+        d3.select('#musicBtn').classed('disable', !isactive);
+        if (isactive){
+            activemenu(d3.select('#musicHolder'));
+        }else{
+            disablemenu(d3.select('#musicHolder'));
+        }
     });
 
     // grid - https://github.com/gridstack/gridstack.js
@@ -93,15 +91,19 @@ $(function () {
     };
 
     $('#left_panel').gridstack(options);
-    var grid = $('#left_panel').data('gridstack');
+    var gridl = $('#left_panel').data('gridstack');
     $('#left_panel .griditem').each((i, g) => {
-        grid.addWidget(g, 0, 0, 3, g.getAttribute('offset-height') || 2, true);
+        gridl.addWidget(g, 0, 0, 3, g.getAttribute('offset-height') || 2, true);
     });
 
 
     $('#right_panel').gridstack(_.defaults({
         float: true
     }, options));
+    var gridr = $('#right_panel').data('gridstack');
+    $('#right_panel .griditem').each((i, g) => {
+        gridr.addWidget(g, 0, 0, 3, g.getAttribute('offset-height') || 2, true);
+    });
 
     // color panel -- https://www.cssscript.com/color-picker-pro/
     var mirror_light_color = new ColorPicker.TabPalette('#lightControl', {
@@ -120,6 +122,23 @@ $(function () {
         document.documentElement.style.setProperty('--color-menu', color.hex); // change color of menu
     });
 
+    function activemenu(path){
+        return path.style('left','50%')
+            .style('top','100%')
+            .classed('disable',false)
+            .transition().ease(d3.easeQuad)
+            .style('top','50%');
+    }
+
+    function disablemenu(path){
+        return path.transition().ease(d3.easeQuad)
+            .style('top','100%')
+            .style('top','50%')
+            .on('end',function () {
+                d3.select(this).classed('disable',true);
+            })
+
+    }
 
 });
 

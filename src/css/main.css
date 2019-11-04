@@ -185,7 +185,7 @@ Not supports in Firefox and IE */
         transform: translateX(-100%);
     }
 }
-#musicPlayer_full {
+#musicPanel {
     width: 380px;
     height: 680px;
     -ms-zoom: 0.75;
@@ -221,6 +221,7 @@ Not supports in Firefox and IE */
 }
 
 .ui-widget-content {
+    display: unset;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -228,4 +229,13 @@ Not supports in Firefox and IE */
 
 .ui-widget-content.disable{
     display: none;
+}
+.healthIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: 2px solid white;
+}
+.healthIcon i {
+    font-size: 15px;
 }

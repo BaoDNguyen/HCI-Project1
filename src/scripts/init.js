@@ -15,10 +15,37 @@ $(function () {
     d3.select('#healthBtn').on('click', function () {
         let isactive = d3.select(this).classed('disable');
         if (isactive) {
+            $('#right_panel').data('gridstack').addWidget($('<div class="griditem" offset-height ="2" id="musicplayer">\n' +
+                '    <div class="grid-stack-item-content">\n' +
+                '        <i class="material-icons tiny dragIcon">pan_tool</i>\n' +
+                '        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>\n' +
+                '    </div>\n' +
+                '</div>'), 0, 0, 3, musicplayer.getAttribute('offset-height')||2, true);
             activemenu(d3.select('#healthHolder'));
-            loadHealths();
+            loadHealths(function(data){
+                // bed
+                let bed_data = data.activity;
+                let bed_data_last = bed_data[bed_data.length-1];
+                d3.select('#bedH .value').text(((new Date(bed_data_last.endDate) - new Date(bed_data_last.startDate))/3600000).toFixed(1));
+                // weight
+                let weight_data = data.weight;
+                let weight_data_last = weight_data[weight_data.length-1];
+                d3.select('#weightH .value').text(weight_data_last.value.toFixed(1));
+                d3.select('#weightH .unit').text(weight_data_last.unit);
+                // weight
+                let distance_data = data.distance;
+                let distance_data_last = distance_data[weight_data.length-1];
+                d3.select('#distanceH .value').text(Math.round(distance_data_last.value/1000));
+                d3.select('#distanceH .unit').text('km');
+                // weight
+                let heart_rate_data = data.distance;
+                let heart_rate_data_last = distance_data[heart_rate_data.length-1];
+                d3.select('#heart_rateH .value').text(Math.round(heart_rate_data_last.value));
+                d3.select('#heart_rateH .unit').text('bpm');
+            });
         }else{
             disablemenu(d3.select('#healthHolder'));
+            $('.grid-stack').data('gridstack').removeWidget($('#heathHolder'));
         }
         d3.select(this).classed('disable',!isactive)
     });

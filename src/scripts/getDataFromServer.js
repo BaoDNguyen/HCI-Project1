@@ -68,10 +68,11 @@ function loadTweets() {
     }
     return tweets;
 }
-function loadHealths() {
+function loadHealths(callback) {
     var userId = firebase.auth().currentUser.uid;
     return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
         healths = JSON.parse(snapshot.val().data);
-        console.log(JSON.stringify(healths));
+        console.log(healths);
+        callback(healths);
     });
 }

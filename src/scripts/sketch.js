@@ -18,14 +18,6 @@ let timer_NewsFeed;
 
 //Variables for speech controls - Bao
 let hello = false;
-let controlnews = false;
-let controlcalendar = false;
-let controlweather = false;
-let controlmusics = false;
-let controlhealth = false;
-let controlyoutube = false;
-let controlchatmusics0 = false;
-let controlmusics1 = false;
 let bot;
 let user_input;
 let output;
@@ -168,6 +160,14 @@ function mygetSpeech() {
                         r = speechdic[r] + Bweather.list[0].weather[0].description;
                         console.log(Bweather.list[0].weather[0].description);
                         console.log(r);
+                        break;
+                    case "music_on" :
+                        r = speechdic[r][Math.floor(random(0, speechdic[r].length - 1))];
+                        d3.select("#musicBtn").dispatch('click');
+                        break;
+                    case "twitter_on" :
+                        r = speechdic[r][Math.floor(random(0, speechdic[r].length - 1))];
+                        d3.select("#twitterBtn").dispatch('click');
                         break;
                     default:
                         r = speechdic[r][Math.floor(random(0,speechdic[r].length-1))];

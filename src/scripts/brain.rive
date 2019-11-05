@@ -45,9 +45,9 @@
 + hello
 - Hello human.
 
-+ *
-- I don't have a reply for that.
-- Try asking that a different way.
+// + *
+// - I don't have a reply for that.
+// - Try asking that a different way.
 
 + [*] (what|tell) [*] time [*]
 - time_query

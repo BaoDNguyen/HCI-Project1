@@ -123,6 +123,7 @@ function getweather(data0) {
         if (!img0[icon])
             img0[icon] = loadImage('https://openweathermap.org/img/wn/'+icon+'.png');
     });
+    console.log(Bweather);
 }
 
 // weather function (Bao)
@@ -154,7 +155,7 @@ function gettime(data2){
 //speech function (Bao)
 function mygetSpeech() {
     if (speechRec.resultValue){
-        M.toast({html:speechRec.resultString});
+        // M.toast({html:speechRec.resultString});
         bot.reply("local-user",speechRec.resultString).then(r=>{
             console.log(r);
             if (speechdic[r]){
@@ -163,13 +164,20 @@ function mygetSpeech() {
                         r = speechdic[r]+moment(Btime.utc_datetime).format('h:mm:ss a');
                         console.log(r);
                         break;
+                    case "weather_on" :
+                        r = speechdic[r] + Bweather.list[0].weather[0].description;
+                        console.log(Bweather.list[0].weather[0].description);
+                        console.log(r);
+                        break;
                     default:
                         r = speechdic[r][Math.floor(random(0,speechdic[r].length-1))];
                         break;
                 }
             }
-            speech.speak(r);
-            M.toast({html:r});
+            if (!r.match('ERR')) {
+                speech.speak(r);
+                // M.toast({html: r});
+            }
         });
         let keywords = speechRec.resultString.toLowerCase().split(" ");
         // if (keywords.includes("open") && keywords.includes("news")) {

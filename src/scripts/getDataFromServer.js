@@ -28,7 +28,6 @@ if(!accessToken || !secret){
 
         var user = result.user;
         alert("Authenticated with twitter " + user.displayName);
-        debugger
         authenticate(accessToken, secret);
 
     }).catch(function (error) {

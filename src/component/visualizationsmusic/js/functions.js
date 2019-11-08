@@ -133,3 +133,17 @@ document.getElementsByClassName('arrow-up-icon')[0].addEventListener('click', fu
 document.getElementsByClassName('arrow-down-icon')[0].addEventListener('click', function(){
     document.getElementById('visualizations-player-playlist').style.display = 'none';
 });
+
+window.onmessage = function(e){
+    switch (e.data) {
+        case "play":
+            Amplitude.play();
+            break;
+        case "pause":
+            Amplitude.pause()
+            break;
+        case "change":
+            Amplitude.next()
+            break;
+    }
+};

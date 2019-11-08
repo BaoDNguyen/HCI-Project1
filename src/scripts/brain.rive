@@ -4,6 +4,7 @@
 ! var date = Wednesday
 ! var weather = nice
 
+! sub don't       = do not
 ! sub i'm       = i am
 ! sub i'd       = i would
 ! sub i've      = i have
@@ -42,8 +43,12 @@
 ! sub didn't    = did not
 ! sub it's      = it is
 
-+ hello
-- Hello human.
++ (hello|hi) [*]
+- Yeah, Hello human.
+- Oh, hi there.
+- Welcome back, I am Magic Mirror
+- Nice to meet you
+- How do you do?
 
 // + *
 // - I don't have a reply for that.
@@ -69,12 +74,20 @@
     + [*] open [*] news [*]
 - news_on
 
-+ [*] (listen|music|song|sing) [*]
++ [*] (on|open) [*] (listen|music|song|sing) [*]
 - music_on
 
-+ [*] change [*] song [*]
-- Well, I thouhgt you love this song, what's about this one?
-- Okay, let try this song.
++ [*] (listen|music|song|sing) [*] (on|open) [*]
+- music_on
+
++ [*] (listen|music|song|sing) [*] off [*]
+- music_off
+
++ [*] (close|closed|off|closes) [*] (listen|music|song|sing) [*]
+- music_off
+
++ [*] (change|next|nexts) [*] (music|song) [*]
+- music_change
 
 + [*] (turn|turn off) [*] (light|light off) [*]
 - light_off
@@ -94,7 +107,10 @@
 ^ Give you guys A plus. \n
 ^ Ha ha ha ha ha ha.
 
-+ [*] change [*] light [*] color [*]
++ [*] (switch|change) [*] light [*] color [*]
+- light_color
+
++ [*] do not like [*] light [*] color [*]
 - light_color
 
 + [*] change [*] color [*] light [*]

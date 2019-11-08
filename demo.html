@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="col s6">
-                    <div class="draggable ui-widget-content grid-stack-item-content disable" id="musicHolder" style="width: 300px;height: 550px; margin-top:-275px; margin-left:-150px">
+                    <div class="draggable ui-widget-content grid-stack-item-content disable" id="musicHolder" style="width: 190px;height: 330px;margin-top: -200px;margin-left: -95px;left: 50%;top: 50%;">
                         <i class="material-icons tiny dragIcon">pan_tool</i>
                         <iframe id="musicPanel" src="src/component/visualizationsmusic/index.html" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>
@@ -107,57 +107,22 @@
                         <i class="material-icons tiny dragIcon">pan_tool</i>
                         <div id ="twitterPanel"></div>
                     </div>
+                    <div class="draggable ui-widget-content grid-stack-item-content disable" id="youtubeHolder" style="width: 400px;height: 300px; margin-top:-275px; margin-left:-150px">
+                        <i class="material-icons tiny dragIcon">pan_tool</i>
+                        <div id ="youtube">
+                            <div class="bheader row">
+                                <div class="col s12">
+                                    <input placeholder="https://www.youtube.com/watch?v=d59H0UxhyaY" id="weblink_input" class="browser-default s12" type="text" onchange="youtubeiframe.src=this.value">
+                                </div>
+                            </div>
+                            <iframe id="youtubeiframe" width="100%" height="auto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col s3">
                     <div class="grid-stack grid-stack-3" id="right_panel">
-                        <div class="griditem" offset-height ="3" id="heathHolder">
-                            <div class="grid-stack-item-content">
-                                <i class="material-icons tiny dragIcon">pan_tool</i>
-                                <div id="healthPanel">
-                                    <div id="healthGraph" class="col s12">
-                                    </div>
-                                    <div class="col s12">
-                                        <div class="col s3">
-                                            <div class="healthIcon valign-wrapper center-align" id="bedH">
-                                                <i class="fa fa-bed"></i>
-                                                <div style="margin-left: 5px">
-                                                    <span class="row value">8</span>
-                                                    <span class="row unit">hours</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col s3">
-                                            <div class="healthIcon valign-wrapper center-align" id="weightH">
-                                                <i class="fas fa-weight"></i>
-                                                <div style="margin-left: 5px">
-                                                    <span class="row value">8</span>
-                                                    <span class="row unit">hours</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col s3">
-                                            <div class="healthIcon valign-wrapper center-align" id="distanceH">
-                                                <i class="material-icons">directions_run</i>
-                                                <div style="margin-left: 5px">
-                                                    <span class="row value">8</span>
-                                                    <span class="row unit">hours</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col s3">
-                                            <div class="healthIcon valign-wrapper center-align" id="heart_rateH">
-                                                <i class="fa fa-heartbeat"></i>
-                                                <div style="margin-left: 5px">
-                                                    <span class="row value">8</span>
-                                                    <span class="row unit">hours</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 </div>
@@ -169,7 +134,7 @@
                         <span class="hamburger hamburger-3"></span>
                     </label>
 
-                    <a href="#" class="menu-item"><i class="fa fa-calendar" aria-hidden="true"></i>  </a>
+                    <a href="#" class="menu-item disable" id="youtubeBtn"><i class="fas fa-video" aria-hidden="true"></i> <div class="diagonal"></div> </a>
                     <a href="#" class="menu-item disable" id="healthBtn"> <i class="fa fa-heart"></i> <div class="diagonal"></div>  </a>
                     <a href="#" class="menu-item disable" id="musicBtn"> <i class="fa fa-music"></i> <div class="diagonal"></div>   </a>
                     <a href="#" class="menu-item disable" id="twitterBtn"> <i class="fab fa-twitter"></i> <div class="diagonal"></div>  </a>

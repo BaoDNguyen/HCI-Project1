@@ -7,7 +7,7 @@ var Bnews;
 var Btime;
 let speechRec;
 let speech;
-
+let first;
 // timer for news
 let newsfeed_opt = {
     numberfeed : 10, // number of news feed is ran over time
@@ -24,6 +24,9 @@ let output;
 let speechdic = {music_on:["Let me play some songs",
     "I will play some songs on the internet",
     "Let me choose a song from your favorite list"],
+    music_change:["Well, I thought you love this song, what's about this one?"
+    ,"Okay, let try this song."],
+    music_off: ["Got it."],
     news_on: ["Of course. Take your time."],
     light_off: ["Okay, human."],
     health_on: ["You walk a lot this week.",
@@ -59,7 +62,10 @@ function setup() {
     let interim = false;
     speechRec.start(cont,interim);
     speech = new p5.Speech();
-
+    speechRec.rec.onaudioend=function(d){
+        speech.speak(random(['I am here','I am waiting for your request',"Don't let me wait too long"]));
+        setTimeout(function(){speechRec.start()},500);
+    };
     // speech bot
     bot = new RiveScript();
     var files = ["src/scripts/brain.rive"];
@@ -76,7 +82,6 @@ function setup() {
 
     user_input = select('#user_input');
     output = select('#output');
-
 
 
 }
@@ -163,11 +168,28 @@ function mygetSpeech() {
                         break;
                     case "music_on" :
                         r = speechdic[r][Math.floor(random(0, speechdic[r].length - 1))];
-                        d3.select("#musicBtn").dispatch('click');
+                        if (d3.select('#musicBtn').classed('disable'))
+                            d3.select("#musicBtn").dispatch('click');
+                        break;
+                    case "music_off" :
+                        r = speechdic[r][Math.floor(random(0, speechdic[r].length - 1))];
+                        if (!d3.select('#musicBtn').classed('disable'))
+                            d3.select("#musicBtn").dispatch('click');
+                        break;
+                    case "music_change" :
+                        r = speechdic[r][Math.floor(random(0, speechdic[r].length - 1))];
+                        musicPanel.contentWindow.postMessage('change', '*');
                         break;
                     case "twitter_on" :
                         r = speechdic[r][Math.floor(random(0, speechdic[r].length - 1))];
                         d3.select("#twitterBtn").dispatch('click');
+                        break;
+                    case "light_color":
+                        var color_Array = ['red','blue','green','pink'];
+                        var index = Math.floor(random(0,speechdic[r].length-1));
+                        r = speechdic[r][index];
+                        mainContent.style.setProperty('--light-color', color_Array[index]);
+                        document.documentElement.style.setProperty('--color-menu', color_Array[index]); // change color of menu
                         break;
                     default:
                         r = speechdic[r][Math.floor(random(0,speechdic[r].length-1))];
@@ -176,7 +198,7 @@ function mygetSpeech() {
             }
             if (!r.match('ERR')) {
                 speech.speak(r);
-                // M.toast({html: r});
+                M.toast({html: r});
             }
         });
         let keywords = speechRec.resultString.toLowerCase().split(" ");
@@ -221,7 +243,10 @@ function draw() {
     translate(1400,0);
     scale(-1.0,1.0);
     // normal content go here
-
+    if(first){
+        first = false;
+        speech.speak('I am Magical mirror. Nice to meet you');
+    }
 
 }
 

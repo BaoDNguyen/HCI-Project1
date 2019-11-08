@@ -189,11 +189,11 @@ Not supports in Firefox and IE */
     width: 380px;
     height: 680px;
     -ms-zoom: 0.75;
-    -moz-transform: scale(0.75);
+    -moz-transform: scale(0.5);
     -moz-transform-origin: 0 0;
-    -o-transform: scale(0.75);
+    -o-transform: scale(0.5);
     -o-transform-origin: 0 0;
-    -webkit-transform: scale(0.75);
+    -webkit-transform: scale(0.5);
     -webkit-transform-origin: 0 0;
 }
 
@@ -241,10 +241,16 @@ Not supports in Firefox and IE */
     margin-left: 3px;
 }
 .healthIcon .value {
-    font-size: 15px;
+    font-size: 12px;
     line-height: 1rem;
 }
+
+.healthIcon .unit {
+    font-size: 8px;
+}
+
 .healthIcon.active {
+    background-color: #454545;
     transform: scale(1.5);
 }
 
@@ -287,4 +293,24 @@ Not supports in Firefox and IE */
 
 .disable .diagonal {
     display: unset;
+}
+#youtube{
+    background-color: var(--backcolor);
+}
+.bheader{
+    background-color: var(--backcolor);
+    margin: 0!important;
+    padding: 5px;
+}
+#weblink_input {
+    border-radius: 10px;
+    width: 90%;
+    background-color: #dddddd;
+}
+#twitterPanel .title {
+    font-size: 100%!important;
+}
+#twitterPanel .timedisplay {
+    color: #b3b3b3;
+    font-size: 80%;
 }

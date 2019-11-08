@@ -73,4 +73,8 @@ Our mirror has some features:
 
 6. Health information (synchronized with cell phone)
 
+7. Colorful lights
 
+8. Clock
+
+9. Weather information

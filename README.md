@@ -78,3 +78,5 @@ Our mirror has some features:
 8. Clock
 
 9. Weather information
+
+10. Drag and Drop

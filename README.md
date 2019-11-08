@@ -57,4 +57,4 @@ Because users use these applications when they do not want to look at their imag
 
 ## Our implementation
 
-![interface](https://giphy.com/gifs/LoHLskr6tWsBWnQ1XT/html5)
+![interface](https://media.giphy.com/media/LoHLskr6tWsBWnQ1XT/giphy.gif)

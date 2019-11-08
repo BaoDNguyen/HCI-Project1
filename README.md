@@ -54,3 +54,7 @@ At the top-right corner of the mirror, there are some icons of Wifi, Bluetooth, 
 They tell the users related information.
 The main large area in the center is utilized for users looking at them in the mirror, or a place for application such as Youtube.
 Because users use these applications when they do not want to look at their image, so this area is a multifunctional region.
+
+## Our implementation
+
+![interface](https://giphy.com/gifs/LoHLskr6tWsBWnQ1XT/html5)

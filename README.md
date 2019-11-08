@@ -58,3 +58,19 @@ Because users use these applications when they do not want to look at their imag
 ## Our implementation
 
 ![interface](https://media.giphy.com/media/LoHLskr6tWsBWnQ1XT/giphy.gif)
+
+Our mirror has some features:
+
+1. Voice interaction
+
+2. Personal calendar
+
+3. Music player
+
+4. News feed
+
+5. Twitter feed
+
+6. Health information (synchronized with cell phone)
+
+

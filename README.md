@@ -1,5 +1,5 @@
 # HCI-Project1
-Our link: https://baodnguyen.github.io/HCI-Project1/
+Our link: https://baodnguyen.github.io/HCI-Project1-Group9/
 Class: Human Computer Interaction, CS 5332\
 Group: 9
 Group members:
